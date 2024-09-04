@@ -1,0 +1,871 @@
+Delivered-To: hicrawford982@gmail.com
+Received: by 2002:ab0:260d:0:b0:842:fe43:aab with SMTP id c13csp2752206uao;
+        Tue, 3 Sep 2024 12:28:08 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IGsBkFEYiU7qNQt/Hlqb5JDnFkR9MFt6wbmhs9FEMykHqfoVEm5MIfpivC7xA2qCQg/acb3
+X-Received: by 2002:a05:6871:750b:b0:261:1f7d:cf6e with SMTP id 586e51a60fabf-2781a9ad2cfmr3611202fac.41.1725391688446;
+        Tue, 03 Sep 2024 12:28:08 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1725391688; cv=none;
+        d=google.com; s=arc-20160816;
+        b=nS1b9CyobA+tTIAezJWmKK3K63yV1D8XVzv4JAuXXTC4i5C40yKF0FbqMAN9sExuGd
+         HH1igj8z2Za1mhRgKGl0bsABVZInWSBNiogzB0bzmV7k7/loeMZqQQ/50EiHSzQX9a7o
+         4hkEZffxT0pvCChlUy3HuqxlpDeAdtZEV60UDIo0xA8w4ARDC9xVbMb34uUhaCaoDJiF
+         DHOCMVftsW1lK64g9xDRn4shtxXdrZMCwMWMcWuvwJUpwK42jejbFVbPzFzb6PVOBsXo
+         uLVNGRBuBFnLKpULs/uz4TahpHMtW0C/aszxh0D4V3Bpz8WIsqdjRP8b2ZluXFtnCKtG
+         9h0w==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=list-unsubscribe-post:list-unsubscribe:to:subject:message-id
+         :mime-version:from:date:dkim-signature:dkim-signature;
+        bh=8SDAcZWgvJELAfvlcSmWcg5hKqbgAsPwsaYd3LVR5i0=;
+        fh=uDIGoGuwW1sXXXiQQPtmVs1pMIWhfZiXIHGnINVQXxg=;
+        b=FOyPwiek2CpIFPtLablcjlbzAT0Uw/VFWiK4Q6ghyuYbb0AisyIwBXQ0egipUlhicn
+         maqePYhpKDg3Euq67DCrIa6F2hGThKd0mH94i9CfnAIVYu08p3yBbVoIUpj8JS6hmw4Y
+         Grz7SYGn0VRwEvqHc6WYa9LizMsM2m1VTgwsjkx1sskbelG9vrfI5gX4rh85/aXazphk
+         E1JAWc/7h5EL+D9QnMinghxHXa5Cjc00+RLsMRh+Uy+kAy7iWHIhFbxzv8w5VRUxoXIi
+         ssUpYSM2FP/gZc7aCDA/kPO5L+0N1gQG6WammpHnOvkQckQdmiV5lUT11yptleC5Dm38
+         L8hA==;
+        dara=google.com
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@playbackbone.com header.s=sg header.b=R72vfwKM;
+       dkim=pass header.i=@sendgrid.info header.s=smtpapi header.b=R5G3ppOz;
+       spf=pass (google.com: domain of bounces+20238085-4772-hicrawford982=gmail.com@em2540.playbackbone.com designates 167.89.106.59 as permitted sender) smtp.mailfrom="bounces+20238085-4772-hicrawford982=gmail.com@em2540.playbackbone.com";
+       dmarc=pass (p=QUARANTINE sp=NONE dis=NONE) header.from=playbackbone.com
+Return-Path: <bounces+20238085-4772-hicrawford982=gmail.com@em2540.playbackbone.com>
+Received: from xtrwsxpb.outbound-mail.sendgrid.net (xtrwsxpb.outbound-mail.sendgrid.net. [167.89.106.59])
+        by mx.google.com with ESMTPS id af79cd13be357-7a806d807b5si1376473285a.449.2024.09.03.12.28.08
+        for <hicrawford982@gmail.com>
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Tue, 03 Sep 2024 12:28:08 -0700 (PDT)
+Received-SPF: pass (google.com: domain of bounces+20238085-4772-hicrawford982=gmail.com@em2540.playbackbone.com designates 167.89.106.59 as permitted sender) client-ip=167.89.106.59;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@playbackbone.com header.s=sg header.b=R72vfwKM;
+       dkim=pass header.i=@sendgrid.info header.s=smtpapi header.b=R5G3ppOz;
+       spf=pass (google.com: domain of bounces+20238085-4772-hicrawford982=gmail.com@em2540.playbackbone.com designates 167.89.106.59 as permitted sender) smtp.mailfrom="bounces+20238085-4772-hicrawford982=gmail.com@em2540.playbackbone.com";
+       dmarc=pass (p=QUARANTINE sp=NONE dis=NONE) header.from=playbackbone.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=playbackbone.com;
+	h=content-type:from:mime-version:subject:x-feedback-id:to:
+	list-unsubscribe:list-unsubscribe-post:cc:content-type:from:subject:to;
+	s=sg; bh=8SDAcZWgvJELAfvlcSmWcg5hKqbgAsPwsaYd3LVR5i0=;
+	b=R72vfwKMNIfAgp9L/bTlDHhbwfqrLFgAah7Gg6Lya27mMxyiQYg0y60y9GvpASCj9ZAZ
+	heY3FrEaJSEZnWfjMoaftGFR2Z/5kIeUTwVw9cXY3iUeOYLEYPngVrGfoi8Ud2GgQ8YLvk
+	eJ5D6mnugB38eD7bGEf/UpcqBP8oc/52OVJfJsIM8lCYtwvp06fZlOpNzLOUfSk1me+qvR
+	d2yWGPZYkzT69kezFoirk0EgjcZ5hvHwn6iB3gIvg+nb3itXZxZiEDFOwksZf2LY18HC9Q
+	1E4LtSHBpkoqUbLzEDIygvVLevGd0tx802w6cxwwRxTxYblwS+CyWY6HFODPAwMA==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sendgrid.info;
+	h=content-type:from:mime-version:subject:x-feedback-id:to:
+	list-unsubscribe:list-unsubscribe-post:cc:content-type:from:subject:to;
+	s=smtpapi; bh=8SDAcZWgvJELAfvlcSmWcg5hKqbgAsPwsaYd3LVR5i0=;
+	b=R5G3ppOzxRbLMvLhdPK4B0yEroE6jHmTVe0QfI1+vGMVAscIq713YLbx32rtICMtKQ0+
+	yS97euOsaamceSzT3diH+m5rnfozGnLMjj/Ayvolh8Ti/2tIE7zRUzU5/tEBTH5PQByefH
+	nTfxgOgmbnX9kr9kiMGLHVKY7jBIPd71Y=
+Received: by recvd-6c5668c69-whfdr with SMTP id recvd-6c5668c69-whfdr-1-66D76347-14
+	2024-09-03 19:28:07.596128688 +0000 UTC m=+1113341.987852026
+Received: from MjAyMzgwODU (unknown)
+	by geopod-ismtpd-5 (SG) with HTTP
+	id uKPFJSI2QzWtA2lvE1P-Xw
+	Tue, 03 Sep 2024 19:28:07.566 +0000 (UTC)
+Content-Type: multipart/alternative; boundary=59c67409009c06eb45ebced5977dd54de4aec40e0b22f5854bc023c898ac
+Date: Tue, 03 Sep 2024 19:28:07 +0000 (UTC)
+From: The Backbone Team <support@playbackbone.com>
+Mime-Version: 1.0
+Message-ID: <uKPFJSI2QzWtA2lvE1P-Xw@geopod-ismtpd-5>
+Subject: Redeem 3 Months of Apple Arcade
+X-Feedback-ID: 20238085:SG
+X-SG-EID: 
+ =?us-ascii?Q?u001=2EYEOKtZ9fjUrlnjr+tw2D2Bzz=2FvaYwyB=2FP2px7oS7+ELWbHsPwo29omrz+?=
+ =?us-ascii?Q?xheHgGs1TP3zGxJYVeeqz6tXVvAMtDI7k=2FuV+Ed?=
+ =?us-ascii?Q?oXlOqGyUUlqbICIWoHbC6t92S5IUpOAEXuZLwL9?=
+ =?us-ascii?Q?6GVcDhrtX25+MvxyqWQe0FPGVgMfOkZfc1=2F+UHm?=
+ =?us-ascii?Q?aT4YyvEdoyT6msziS65aRMnNzdYtTcfy0ccm98L?=
+ =?us-ascii?Q?UCVqH5cPFCihxHeCktjKps=2FMYviJ1zms2TFp71a?= =?us-ascii?Q?IBdy?=
+X-SG-ID: 
+ =?us-ascii?Q?u001=2ESdBcvi+Evd=2FbQef8eZF3BpTL9BgbK5wfSJMJGMsmprDsPyUTnMagHRCjb?=
+ =?us-ascii?Q?=2F65GublOxglHtj3cwUaqDSeDOCX6Xkh0CJYxYCW?=
+ =?us-ascii?Q?LN8JJhL5GUctZ0hDWE7sIozqD=2FrtqbWclE51OfV?=
+ =?us-ascii?Q?o=2FkGNiSDzge8mRDZAENkdSaIDAXKN7haM03g=3D?=
+To: hicrawford982@gmail.com
+X-Entity-ID: u001.tZWy6ya3JOdT/p06iJMciA==
+List-Unsubscribe: 
+ =?us-ascii?Q?=3Cmailto=3Aunsubscribe=40em2540=2Eplaybackbone=2Ecom=3Fsubject=3Dhttp=3A=2F=2Furl?=
+ =?us-ascii?Q?2996=2Eplaybackbone=2Ecom=2Fwf=2Funsubscribe*q*?=
+ =?us-ascii?Q?upn=3Du001=2ETvUIbrdUjKSS2XRV2EpkrDPVhW5kb6?=
+ =?us-ascii?Q?OLzmj15PvOFTv9JobwctyvT0hSqcVPPhTmFfhtY?=
+ =?us-ascii?Q?OPiDVyQfJx9qAnzP0VTHHZaHIAzeev58oq5fDML?=
+ =?us-ascii?Q?T3bNkoM-2BocnnQm2LUGAns1S7dILP0p9HUgZWj?=
+ =?us-ascii?Q?Sbfv3874s-2BSvNuxWiwp-2BXdHormTBfV5H5XW?=
+ =?us-ascii?Q?fcVuTMkDUUwLaFiO2lknScGwJ-2BEH-2FO61ibI?=
+ =?us-ascii?Q?9u60NK-2BVIX5o7BikXlQ-2B9phuNbSO2GI8y16?=
+ =?us-ascii?Q?SfqQ-2Bak62dCq7tVkRvO1d3SSJwDbyQEoUOEWM?=
+ =?us-ascii?Q?AbGYzI1Srrfh-2Fm2pyFN9p9E9M5Yk2lUpNXeN8?=
+ =?us-ascii?Q?r3jmN9t7XfQzcH4jXQ9e-2F6dxUZ9JHLk9ADc3C?=
+ =?us-ascii?Q?2c-3D=3E=2C=3Chttps=3A=2F=2Fu20238085=2Ect=2Esendgrid=2En?=
+ =?us-ascii?Q?et=2Flu=2Funsubscribe=3Foc=3Du001=2EUS4yiCbLpN=5F5P?=
+ =?us-ascii?Q?cp4sxLdbL2Pr945jeThz7Y8AsIkIWwM67Zhopil?=
+ =?us-ascii?Q?XTjgJyNTRaIsu8iPZ6-uLZ1qI3msYJBx-p4V=5Fmw?=
+ =?us-ascii?Q?69sCz2p6Wk520oBFpyMd6Mv2fDkrgYe4EEDtfbO?=
+ =?us-ascii?Q?caIJeqUBjixE=5F45eQJ6XWfowQsINnDNrpRUs=5F6j?=
+ =?us-ascii?Q?64xLYx3bx68fYkxy0ERZ-bEaDY2DQH7QBAj7VC6?=
+ =?us-ascii?Q?5PptHsei3OL2bSTljs9fi=5FmSjdK6MqhZ=5Fgqxk0O?=
+ =?us-ascii?Q?XznHYwpfwYdXiKIkwVLXDLPURSRlQuGi7b=5F-1SR?=
+ =?us-ascii?Q?1835K9AxRAxTDPs86T=5FusOo2FCbJHr6Dcm2-AnU?=
+ =?us-ascii?Q?XyWINER72mAMuW91cJFOdOoNc1g0nGuZ-qrRT-d?=
+ =?us-ascii?Q?CVqyg9GvTJ4k45=5Ffur5GWSBpO9Wgt9LDOerMETJ?=
+ =?us-ascii?Q?ziCslCEwuv8bCYu8N46QkEje2o-Sw=5FFNBSHfoF7?=
+ =?us-ascii?Q?xhUtEyg=5FzgAVqNeDDsAkAY3jFfridNTyI7z6oki?=
+ =?us-ascii?Q?ePUo8eQakEHqezceqHLuuBFK=5FVfKipLuirKcckb?=
+ =?us-ascii?Q?mq0b5THChd7-Wts9dbIYVR8WFFuoiksoqJ6ixNX?=
+ =?us-ascii?Q?dos8iZnqDAuUe8uiIaGRoX51ZArqrPb58lZ5i1Q?= =?us-ascii?Q?=3E?=
+List-Unsubscribe-Post: List-Unsubscribe=One-Click
+
+--59c67409009c06eb45ebced5977dd54de4aec40e0b22f5854bc023c898ac
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset=iso-8859-1
+Mime-Version: 1.0
+
+( http://url2996.playbackbone.com/ls/click?upn=3Du001.swX5FRD5DBy5G1wHpWNU3=
+-2B86TPMOxH1cA7GcjGaXDCFQd5mOjc-2F354ByhD2mwH0YFdow_bEFSI5fd-2FVtRpdHWCutOT=
+YdoL-2BjBm2UPuPOYQnCgmXKeqViwKRbZVjIGk5bBQdXUwUdzo0ytuCILxQnxIbHhQE2Nd1j-2B=
+jJ93O7DrT3-2FqSOADD50IUqTI-2F29YFuVHhPozElyX-2FGY2MyWspA5rgtU8qJPVaVPD1Z-2B=
+Y2lHcRb7p4BI-2BmpOKUD4YC-2FBg-2FbnW54FG3QCjGTRstVgFWTZMoOqtc7OZyA8-2BendS9R=
+coeRd5W2URL7Zt-2FLWtlWOqSR-2FgVhRvRSHKhVp3PkAjjn1KtblvyrswmLBKy9ciiNZUYr6-2=
+FKoMaBoxuGy3t-2FoZU6hiLLOqFkQ2myLI3ImWXDLe44GGUUw-3D-3D )
+
+***************************************************
+*Enjoy 3 free months of Apple Arcade.
+Enjoy over 200+ games. No ads. No in-app purchases.*
+***************************************************
+
+Cancel anytime.
+
+Thanks for verifying your Backbone One purchase! To activate your free 3 mo=
+nths of Apple Arcade, select the link below. You can also redeem later thro=
+ugh the Backbone app.
+
+Redeem Now (  )
+
+Offer expires 5/8/2025. Apple Arcade subscription auto renews after promoti=
+on until cancelled. Pricing and availability may vary by country or region.=
+ Terms apply.
+
+( http://url2996.playbackbone.com/ls/click?upn=3Du001.swX5FRD5DBy5G1wHpWNU3=
+-2B86TPMOxH1cA7GcjGaXDCFQd5mOjc-2F354ByhD2mwH0YNpYC_bEFSI5fd-2FVtRpdHWCutOT=
+YdoL-2BjBm2UPuPOYQnCgmXKeqViwKRbZVjIGk5bBQdXUwUdzo0ytuCILxQnxIbHhQE2Nd1j-2B=
+jJ93O7DrT3-2FqSOADD50IUqTI-2F29YFuVHhPozElyX-2FGY2MyWspA5rgtU8qJPVaVPD1Z-2B=
+Y2lHcRb7p4BI-2BmpOKUD4YC-2FBg-2FbnW54FGE5vqS-2BeK6jKQTkx7Oj5Fl9WRmWlszTIYbB=
+1RItpfvV5SgqBuF4TiPigBin1A66klvQ7iKMHUq0OnqEaUHy8X0a-2BlPaWvgHcPUeOwgKdEkGx=
+ao5tenCwbXZXKnnb3ztruy8-2FGd3IOUtm-2FNNJgRmEtHQ-3D-3D )
+
+( http://url2996.playbackbone.com/ls/click?upn=3Du001.swX5FRD5DBy5G1wHpWNU3=
+xU0RjDKd5NxUgFpVE7ValPD0xzLj0L1WENS6pSZX7kCht2X_bEFSI5fd-2FVtRpdHWCutOTYdoL=
+-2BjBm2UPuPOYQnCgmXKeqViwKRbZVjIGk5bBQdXUwUdzo0ytuCILxQnxIbHhQE2Nd1j-2BjJ93=
+O7DrT3-2FqSOADD50IUqTI-2F29YFuVHhPozElyX-2FGY2MyWspA5rgtU8qJPVaVPD1Z-2BY2lH=
+cRb7p4BI-2BmpOKUD4YC-2FBg-2FbnW54FGXYaaN8nnugeWXJHNSR5LxJpdZm7wPYdj3hfV2MEW=
+I1Nx3hbvk57YJ-2FhW-2BGbdGWmIM5JxH2nXyFtTvsSyXtlRxx9wJt9Q3c6WYIUEJXDmITLSlw2=
+2gGMHkHv6mAlacjsYqPJqX4VbFkc9OZ1ApSatlA-3D-3D )
+( http://url2996.playbackbone.com/ls/click?upn=3Du001.swX5FRD5DBy5G1wHpWNU3=
+wy8TB-2FkeIzzzQwEtAiwWa7wqzXfbCiSCPMmRKf1G4wKRqtc_bEFSI5fd-2FVtRpdHWCutOTYd=
+oL-2BjBm2UPuPOYQnCgmXKeqViwKRbZVjIGk5bBQdXUwUdzo0ytuCILxQnxIbHhQE2Nd1j-2BjJ=
+93O7DrT3-2FqSOADD50IUqTI-2F29YFuVHhPozElyX-2FGY2MyWspA5rgtU8qJPVaVPD1Z-2BY2=
+lHcRb7p4BI-2BmpOKUD4YC-2FBg-2FbnW54FGuld9ex87TCFlaibiCZC6vjLb-2BttdEBLLPaxH=
+rCS020m4GAaJKmi1RiZWRGqP59cCQ5QOvd5cne8YYsuAO0LDooiIHodo-2BlKqtY7Efy93HsDWW=
+aMcI6yrjZ0i-2FMcols0O-2BTjAFtRqUxOZ4I0cpRP57w-3D-3D )
+( http://url2996.playbackbone.com/ls/click?upn=3Du001.swX5FRD5DBy5G1wHpWNU3=
+5fV2EJ6pgQn4MRC6ZezVawTxh153KPzds3yueQW0-2F-2Bu8LOV_bEFSI5fd-2FVtRpdHWCutOT=
+YdoL-2BjBm2UPuPOYQnCgmXKeqViwKRbZVjIGk5bBQdXUwUdzo0ytuCILxQnxIbHhQE2Nd1j-2B=
+jJ93O7DrT3-2FqSOADD50IUqTI-2F29YFuVHhPozElyX-2FGY2MyWspA5rgtU8qJPVaVPD1Z-2B=
+Y2lHcRb7p4BI-2BmpOKUD4YC-2FBg-2FbnW54FGBNZm2h-2B1jO-2BQvagQxPy4swwfi-2FmYY0=
+ZEDGjJD9lt3RqkUVlxCXAyREAUnryIKIn8Bw4yuWRjs3UpLQ65N-2BhhLbRjIh0a808tMOJSAeZ=
+c-2FFxnGaZWaO9UCxKeFyNhFQ1EHolrGk1H2xg2rHOliH9d4g-3D-3D )
+( http://url2996.playbackbone.com/ls/click?upn=3Du001.swX5FRD5DBy5G1wHpWNU3=
+xBoSa8kZnmsVDAjef-2Bw8-2FNR5cFJtfAP1xhN6dcjcvnlDhci_bEFSI5fd-2FVtRpdHWCutOT=
+YdoL-2BjBm2UPuPOYQnCgmXKeqViwKRbZVjIGk5bBQdXUwUdzo0ytuCILxQnxIbHhQE2Nd1j-2B=
+jJ93O7DrT3-2FqSOADD50IUqTI-2F29YFuVHhPozElyX-2FGY2MyWspA5rgtU8qJPVaVPD1Z-2B=
+Y2lHcRb7p4BI-2BmpOKUD4YC-2FBg-2FbnW54FG7zoUzq2xH5ksQbafvq-2F9oHoC5UHRqXUGpf=
+SQ80n0TnSJag6UUkkSDKs9JL6VeKKmiYHDGeXWfGTbl9BeM98bamB7W0d5pSoOtLr0iwmQLJUU9=
+E6-2FZ4R55jRWO3BaKsROVCs1kUB9Be8PB4FMMFCCMw-3D-3D )
+( http://url2996.playbackbone.com/ls/click?upn=3Du001.swX5FRD5DBy5G1wHpWNU3=
+9qvwSiBjRBlDzPxYGkRxKQEnDdmE1-2Bt0oIkCFyeEtmUK7S3_bEFSI5fd-2FVtRpdHWCutOTYd=
+oL-2BjBm2UPuPOYQnCgmXKeqViwKRbZVjIGk5bBQdXUwUdzo0ytuCILxQnxIbHhQE2Nd1j-2BjJ=
+93O7DrT3-2FqSOADD50IUqTI-2F29YFuVHhPozElyX-2FGY2MyWspA5rgtU8qJPVaVPD1Z-2BY2=
+lHcRb7p4BI-2BmpOKUD4YC-2FBg-2FbnW54FGg-2BLdanQoQSzeC3rvPvGp-2Ber1HlXj2VloeA=
+w9PEfPUuMixaFAUTlTMJG85LNcuisTHMbZ-2FmHy3KRIX27hkeyJ-2F4CfeWb6WDKcqaUg3E2wi=
+kDrGf5Hh67eKg9DXuIYH7HKi3pGPQC3j2U8Oa-2F8hAnKuQ-3D-3D )
+( http://url2996.playbackbone.com/ls/click?upn=3Du001.swX5FRD5DBy5G1wHpWNU3=
+zEF5R-2FbRlU7UeM3lShGsGRIzgG1Cvp5DuvcbABqndpgHugV_bEFSI5fd-2FVtRpdHWCutOTYd=
+oL-2BjBm2UPuPOYQnCgmXKeqViwKRbZVjIGk5bBQdXUwUdzo0ytuCILxQnxIbHhQE2Nd1j-2BjJ=
+93O7DrT3-2FqSOADD50IUqTI-2F29YFuVHhPozElyX-2FGY2MyWspA5rgtU8qJPVaVPD1Z-2BY2=
+lHcRb7p4BI-2BmpOKUD4YC-2FBg-2FbnW54FGhqkTRXrG7-2FmMFX1lCfmRb-2F8NwZJaZyctif=
+ALMjUdklKnMGMx0L-2BlxowWZm49Z9g7UaRrJg2So37lyk1DBOGGJXnRpJV8vLWZpj3r78AleFH=
+9z-2Bj-2Bpfd5TtOnk-2BchyIz2bGQ7rr4cTn5BVD-2FznRi2bQ-3D-3D )
+( http://url2996.playbackbone.com/ls/click?upn=3Du001.swX5FRD5DBy5G1wHpWNU3=
+-2Bo-2Blj96XkY2FmrGgrjGVsayewHqxAceldavxH71WNA7UIfi_bEFSI5fd-2FVtRpdHWCutOT=
+YdoL-2BjBm2UPuPOYQnCgmXKeqViwKRbZVjIGk5bBQdXUwUdzo0ytuCILxQnxIbHhQE2Nd1j-2B=
+jJ93O7DrT3-2FqSOADD50IUqTI-2F29YFuVHhPozElyX-2FGY2MyWspA5rgtU8qJPVaVPD1Z-2B=
+Y2lHcRb7p4BI-2BmpOKUD4YC-2FBg-2FbnW54FGvM7opCAPkcFteiY88j6m6GTpQZYq1bxT6HNv=
+tN2J4xjrYTfwCx3IC71buP6OvhRMvMI3lvM0kyfyXcBziNxLQnWQNi3VLoyLM0-2BAayqDNyQj-=
+2BdNRWId1AYwnqmMd8J6dF3DpGIQOwzgDeboLA6mAIw-3D-3D )
+
+=A9 2023 Backbone Labs, Inc.
+
+915 Broadway Street Suite 258,
+Vancouver, WA 98660
+
+Have a question?
+Visit our *Help Center* ( http://url2996.playbackbone.com/ls/click?upn=3Du0=
+01.swX5FRD5DBy5G1wHpWNU33o9xkKOBZb6VD2MEy3jKml8s-2BAhjWNDk87ylDp8ZiLbyRkD_b=
+EFSI5fd-2FVtRpdHWCutOTYdoL-2BjBm2UPuPOYQnCgmXKeqViwKRbZVjIGk5bBQdXUwUdzo0yt=
+uCILxQnxIbHhQE2Nd1j-2BjJ93O7DrT3-2FqSOADD50IUqTI-2F29YFuVHhPozElyX-2FGY2MyW=
+spA5rgtU8qJPVaVPD1Z-2BY2lHcRb7p4BI-2BmpOKUD4YC-2FBg-2FbnW54FGKXEBJX3gHwFC1C=
+SVV0MDV7bohnQ8Ys22-2B-2B4-2FeaZNH3gAQ2kjZPqyH7eNkY6fQpnMwYb1JsXptcoqFxlieIo=
+1IE-2FP8c12WQWgYHJNgfXHIvjbA3S53-2B2E2VUssYVr4BqjRG5UqQ2ZE0CTAXj5BAj5QA-3D-=
+3D )
+
+Unsubscribe ( <%asm_group_unsubscribe_raw_url%> )
+
+Terms & Conditions ( http://url2996.playbackbone.com/ls/click?upn=3Du001.sw=
+X5FRD5DBy5G1wHpWNU3-2B86TPMOxH1cA7GcjGaXDCHGDOsDP3i7feNExbE-2BU35K1I6t_bEFS=
+I5fd-2FVtRpdHWCutOTYdoL-2BjBm2UPuPOYQnCgmXKeqViwKRbZVjIGk5bBQdXUwUdzo0ytuCI=
+LxQnxIbHhQE2Nd1j-2BjJ93O7DrT3-2FqSOADD50IUqTI-2F29YFuVHhPozElyX-2FGY2MyWspA=
+5rgtU8qJPVaVPD1Z-2BY2lHcRb7p4BI-2BmpOKUD4YC-2FBg-2FbnW54FGABLfsr-2Fj1y0yKNt=
+-2B5nU3EQWN0-2FgUhgGTTjxCnAeQb94w8QryTSNCgc5bUpHFMFHosbIDJr-2BQjkjD-2B2NQcC=
+6LnUbjpyUzq95R-2BbWgM45da4tv-2BZChBjzTvhtNw6zhr7w2nPMha-2BN2oajcPixA-2ByfAm=
+Q-3D-3D ) Privacy Policy ( http://url2996.playbackbone.com/ls/click?upn=3Du=
+001.swX5FRD5DBy5G1wHpWNU3-2B86TPMOxH1cA7GcjGaXDCHgZzz8qY-2FNq1QXuyGestE-2B7=
+6XA_bEFSI5fd-2FVtRpdHWCutOTYdoL-2BjBm2UPuPOYQnCgmXKeqViwKRbZVjIGk5bBQdXUwUd=
+zo0ytuCILxQnxIbHhQE2Nd1j-2BjJ93O7DrT3-2FqSOADD50IUqTI-2F29YFuVHhPozElyX-2FG=
+Y2MyWspA5rgtU8qJPVaVPD1Z-2BY2lHcRb7p4BI-2BmpOKUD4YC-2FBg-2FbnW54FGDy1WzPmz4=
+UR0oKPgW5s0MiMQl3dmMiMKeNBiR02Jd8D1ahB7mSsbGRTgWYe7dZvisZs3OZYpMdMnTh26AjpC=
+O5Av7EZzUqPSW-2BbxEt4NOXXN5wOuuIiI9CyjvFoMVeTy04IS2ykkolFgiDfdvPPZQQ-3D-3D =
+)
+--59c67409009c06eb45ebced5977dd54de4aec40e0b22f5854bc023c898ac
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/html; charset=iso-8859-1
+Mime-Version: 1.0
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org=
+/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html data-editor-version=3D"2" class=3D"sg-campaigns" xmlns=3D"http://www.=
+w3.org/1999/xhtml">
+    <head>
+      <meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3Dutf=
+-8">
+      <meta name=3D"viewport" content=3D"width=3Ddevice-width, initial-scal=
+e=3D1, minimum-scale=3D1, maximum-scale=3D1">
+      <!--[if !mso]><!-->
+      <meta http-equiv=3D"X-UA-Compatible" content=3D"IE=3DEdge">
+      <!--<![endif]-->
+      <!--[if (gte mso 9)|(IE)]>
+      <xml>
+        <o:OfficeDocumentSettings>
+          <o:AllowPNG/>
+          <o:PixelsPerInch>96</o:PixelsPerInch>
+        </o:OfficeDocumentSettings>
+      </xml>
+      <![endif]-->
+      <!--[if (gte mso 9)|(IE)]>
+  <style type=3D"text/css">
+    body {width: 600px;margin: 0 auto;}
+    table {border-collapse: collapse;}
+    table, td {mso-table-lspace: 0pt;mso-table-rspace: 0pt;}
+    img {-ms-interpolation-mode: bicubic;}
+  </style>
+<![endif]-->
+      <style type=3D"text/css">
+    body, p, div {
+      font-family: inherit;
+      font-size: 14px;
+    }
+    body {
+      color: #000000;
+    }
+    body a {
+      color: #1188E6;
+      text-decoration: none;
+    }
+    p { margin: 0; padding: 0; }
+    table.wrapper {
+      width:100% !important;
+      table-layout: fixed;
+      -webkit-font-smoothing: antialiased;
+      -webkit-text-size-adjust: 100%;
+      -moz-text-size-adjust: 100%;
+      -ms-text-size-adjust: 100%;
+    }
+    img.max-width {
+      max-width: 100% !important;
+    }
+    .column.of-2 {
+      width: 50%;
+    }
+    .column.of-3 {
+      width: 33.333%;
+    }
+    .column.of-4 {
+      width: 25%;
+    }
+    ul ul ul ul  {
+      list-style-type: disc !important;
+    }
+    ol ol {
+      list-style-type: lower-roman !important;
+    }
+    ol ol ol {
+      list-style-type: lower-latin !important;
+    }
+    ol ol ol ol {
+      list-style-type: decimal !important;
+    }
+    @media screen and (max-width:480px) {
+      .preheader .rightColumnContent,
+      .footer .rightColumnContent {
+        text-align: left !important;
+      }
+      .preheader .rightColumnContent div,
+      .preheader .rightColumnContent span,
+      .footer .rightColumnContent div,
+      .footer .rightColumnContent span {
+        text-align: left !important;
+      }
+      .preheader .rightColumnContent,
+      .preheader .leftColumnContent {
+        font-size: 80% !important;
+        padding: 5px 0;
+      }
+      table.wrapper-mobile {
+        width: 100% !important;
+        table-layout: fixed;
+      }
+      img.max-width {
+        height: auto !important;
+        max-width: 100% !important;
+      }
+      a.bulletproof-button {
+        display: block !important;
+        width: auto !important;
+        font-size: 80%;
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+      }
+      .columns {
+        width: 100% !important;
+      }
+      .column {
+        display: block !important;
+        width: 100% !important;
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+      }
+      .social-icon-column {
+        display: inline-block !important;
+      }
+    }
+  </style>
+      <!--user entered Head Start--><link href=3D"https://fonts.googleapis.=
+com/css?family=3DMuli&display=3Dswap" rel=3D"stylesheet"><style>
+body {font-family: 'Muli', sans-serif;}
+</style><!--End Head user entered-->
+    </head>
+    <body>
+      <center class=3D"wrapper" data-link-color=3D"#1188E6" data-body-style=
+=3D"font-size:14px; font-family:inherit; color:#000000; background-color:#F=
+FFFFF;">
+        <div class=3D"webkit">
+          <table cellpadding=3D"0" cellspacing=3D"0" border=3D"0" width=3D"=
+100%" class=3D"wrapper" bgcolor=3D"#FFFFFF">
+            <tr>
+              <td valign=3D"top" bgcolor=3D"#FFFFFF" width=3D"100%">
+                <table width=3D"100%" role=3D"content-container" class=3D"o=
+uter" align=3D"center" cellpadding=3D"0" cellspacing=3D"0" border=3D"0">
+                  <tr>
+                    <td width=3D"100%">
+                      <table width=3D"100%" cellpadding=3D"0" cellspacing=
+=3D"0" border=3D"0">
+                        <tr>
+                          <td>
+                            <!--[if mso]>
+    <center>
+    <table><tr><td width=3D"600">
+  <![endif]-->
+                                    <table width=3D"100%" cellpadding=3D"0"=
+ cellspacing=3D"0" border=3D"0" style=3D"width:100%; max-width:600px;" alig=
+n=3D"center">
+                                      <tr>
+                                        <td role=3D"modules-container" styl=
+e=3D"padding:0px 0px 0px 0px; color:#000000; text-align:left;" bgcolor=3D"#=
+FFFFFF" width=3D"100%" align=3D"left"><table class=3D"module preheader preh=
+eader-hide" role=3D"module" data-type=3D"preheader" border=3D"0" cellpaddin=
+g=3D"0" cellspacing=3D"0" width=3D"100%" style=3D"display: none !important;=
+ mso-hide: all; visibility: hidden; opacity: 0; color: transparent; height:=
+ 0; width: 0;">
+    <tr>
+      <td role=3D"module-content">
+        <p></p>
+      </td>
+    </tr>
+  </table><table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" align=3D"=
+center" width=3D"100%" role=3D"module" data-type=3D"columns" style=3D"paddi=
+ng:0px 0px 0px 0px;" bgcolor=3D"#ffffff" data-distribution=3D"1">
+    <tbody>
+      <tr role=3D"module-content">
+        <td height=3D"100%" valign=3D"top"><table width=3D"600" style=3D"wi=
+dth:600px; border-spacing:0; border-collapse:collapse; margin:0px 0px 0px 0=
+px;" cellpadding=3D"0" cellspacing=3D"0" align=3D"left" border=3D"0" bgcolo=
+r=3D"" class=3D"column column-0">
+      <tbody>
+        <tr>
+          <td style=3D"padding:0px;margin:0px;border-spacing:0;"><table cla=
+ss=3D"wrapper" role=3D"module" data-type=3D"image" border=3D"0" cellpadding=
+=3D"0" cellspacing=3D"0" width=3D"100%" style=3D"table-layout: fixed;" data=
+-muid=3D"72aac1ba-9036-4a77-b9d5-9a60d9b05cba">
+    <tbody>
+      <tr>
+        <td style=3D"font-size:6px; line-height:10px; padding:0px 0px 0px 0=
+px;" valign=3D"top" align=3D"center">
+         =20
+        <a href=3D"http://url2996.playbackbone.com/ls/click?upn=3Du001.swX5=
+FRD5DBy5G1wHpWNU3-2B86TPMOxH1cA7GcjGaXDCFQd5mOjc-2F354ByhD2mwH0YnLcR_bEFSI5=
+fd-2FVtRpdHWCutOTYdoL-2BjBm2UPuPOYQnCgmXKeqViwKRbZVjIGk5bBQdXUwUdzo0ytuCILx=
+QnxIbHhQE2Nd1j-2BjJ93O7DrT3-2FqSOADD50IUqTI-2F29YFuVHhPozElyX-2FGY2MyWspA5r=
+gtU8qJPVaVPD1Z-2BY2lHcRb7p4BI-2BmpOKUD4YC-2FBg-2FbnW54FGoXP5T45MpVlDRPmFdkY=
+R4MLG5Qa07nfP6MpHrDNNL8Cn3kEmwpJb-2Fz1OOEIlM1lDX-2ByQBIMP-2B8CtVXwqGRwcAy-2=
+BNkfS0Hhai6JNBM3zCtDoqOvNFKfpm62rO4txetyDyanUx-2FmUz3ur7a3oVEnZqvQ-3D-3D"><=
+img class=3D"max-width" border=3D"0" style=3D"display:block; color:#000000;=
+ text-decoration:none; font-family:Helvetica, arial, sans-serif; font-size:=
+16px; max-width:100% !important; width:100%; height:auto !important;" width=
+=3D"600" alt=3D"" data-proportionally-constrained=3D"true" data-responsive=
+=3D"true" src=3D"http://cdn.mcauto-images-production.sendgrid.net/7c4307164=
+a771199/bf2028ad-6f0b-48ff-bbd0-f9149b934512/1800x240.png"></a></td>
+      </tr>
+    </tbody>
+  </table><table class=3D"module" role=3D"module" data-type=3D"spacer" bord=
+er=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"100%" style=3D"table-=
+layout: fixed;" data-muid=3D"331cde94-eb45-45dc-8852-b7dbeb9101d7.2">
+    <tbody>
+      <tr>
+        <td style=3D"padding:0px 0px 1px 0px;" role=3D"module-content" bgco=
+lor=3D"">
+        </td>
+      </tr>
+    </tbody>
+  </table><table class=3D"wrapper" role=3D"module" data-type=3D"image" bord=
+er=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"100%" style=3D"table-=
+layout: fixed;" data-muid=3D"d8508015-a2cb-488c-9877-d46adf313282">
+    <tbody>
+      <tr>
+        <td style=3D"font-size:6px; line-height:10px; padding:0px 0px 0px 0=
+px;" valign=3D"top" align=3D"center"><img class=3D"max-width" border=3D"0" =
+style=3D"display:block; color:#000000; text-decoration:none; font-family:He=
+lvetica, arial, sans-serif; font-size:16px; max-width:100% !important; widt=
+h:100%; height:auto !important;" width=3D"NaN" alt=3D"" data-proportionally=
+-constrained=3D"true" data-responsive=3D"true" src=3D"http://cdn.mcauto-ima=
+ges-production.sendgrid.net/7c4307164a771199/ff4e5510-8910-4bb3-82d7-a7e4c6=
+c359ff/1080x1080.png"></td>
+      </tr>
+    </tbody>
+  </table><table class=3D"module" role=3D"module" data-type=3D"text" border=
+=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"100%" style=3D"table-la=
+yout: fixed;" data-muid=3D"948e3f3f-5214-4721-a90e-625a47b1c957" data-mc-mo=
+dule-version=3D"2019-10-22">
+    <tbody>
+      <tr>
+        <td style=3D"padding:0px 48px 0px 58px; line-height:32px; text-alig=
+n:inherit; background-color:#ffffff;" height=3D"100%" valign=3D"top" bgcolo=
+r=3D"#ffffff" role=3D"module-content"><div><h1 style=3D"text-align: center"=
+><span style=3D"font-size: 24px"><strong>Enjoy 3 free months of Apple Arcad=
+e.<br>
+Enjoy over 200+ games. No ads. No in-app purchases.</strong></span></h1><di=
+v></div></div></td>
+      </tr>
+    </tbody>
+  </table><table class=3D"module" role=3D"module" data-type=3D"text" border=
+=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"100%" style=3D"table-la=
+yout: fixed;" data-muid=3D"04624c7b-5501-4bcb-bf5f-d6cbbd4f2de4" data-mc-mo=
+dule-version=3D"2019-10-22">
+    <tbody>
+      <tr>
+        <td style=3D"padding:0px 0px 0px 0px; line-height:18px; text-align:=
+inherit;" height=3D"100%" valign=3D"top" bgcolor=3D"" role=3D"module-conten=
+t"><div><div style=3D"font-family: inherit; text-align: center"><span style=
+=3D"font-size: 14px">Cancel anytime.</span></div><div></div></div></td>
+      </tr>
+    </tbody>
+  </table><table class=3D"module" role=3D"module" data-type=3D"text" border=
+=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"100%" style=3D"table-la=
+yout: fixed;" data-muid=3D"a10dcb57-ad22-4f4d-b765-1d427dfddb4e" data-mc-mo=
+dule-version=3D"2019-10-22">
+    <tbody>
+      <tr>
+        <td style=3D"padding:16px 48px 16px 48px; line-height:22px; text-al=
+ign:inherit; background-color:#FFFFFF;" height=3D"100%" valign=3D"top" bgco=
+lor=3D"#FFFFFF" role=3D"module-content"><div><div style=3D"font-family: inh=
+erit; text-align: center"><span style=3D"white-space-collapse: preserve; te=
+xt-wrap: wrap; font-size: 18px">Thanks for verifying your Backbone One purc=
+hase! To activate your free 3 months of Apple Arcade, select the link below=
+. You can also redeem later through the Backbone app.</span></div><div></di=
+v></div></td>
+      </tr>
+    </tbody>
+  </table><table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" class=3D"=
+module" data-role=3D"module-button" data-type=3D"button" role=3D"module" st=
+yle=3D"table-layout:fixed;" width=3D"100%" data-muid=3D"65d404bb-9e4b-4f49-=
+bbba-ee7e2ebd41e7">
+      <tbody>
+        <tr>
+          <td align=3D"center" bgcolor=3D"" class=3D"outer-td" style=3D"pad=
+ding:0px 0px 12px 0px;">
+            <table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" class=
+=3D"wrapper-mobile" style=3D"text-align:center;">
+              <tbody>
+                <tr>
+                <td align=3D"center" bgcolor=3D"#F15623" class=3D"inner-td"=
+ style=3D"border-radius:6px; font-size:16px; text-align:center; background-=
+color:inherit;"><a href=3D"" style=3D"background-color:#F15623; border:0px =
+solid #F15623; border-color:#F15623; border-radius:8px; border-width:0px; c=
+olor:#ffffff; display:inline-block; font-size:16px; font-weight:bold; lette=
+r-spacing:0px; line-height:normal; padding:20px 64px 20px 64px; text-align:=
+center; text-decoration:none; border-style:solid; font-family:inherit;" tar=
+get=3D"_blank">Redeem Now</a></td>
+                </tr>
+              </tbody>
+            </table>
+          </td>
+        </tr>
+      </tbody>
+    </table><table class=3D"module" role=3D"module" data-type=3D"text" bord=
+er=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"100%" style=3D"table-=
+layout: fixed;" data-muid=3D"337b0e93-06e4-4c98-965d-ccec3128e4d5" data-mc-=
+module-version=3D"2019-10-22">
+    <tbody>
+      <tr>
+        <td style=3D"padding:18px 36px 18px 36px; line-height:22px; text-al=
+ign:inherit;" height=3D"100%" valign=3D"top" bgcolor=3D"" role=3D"module-co=
+ntent"><div><div style=3D"font-family: inherit; text-align: center"><span s=
+tyle=3D"font-style: italic; color: #3f3f3f; font-size: 12px">Offer expires =
+5/8/2025. Apple Arcade subscription auto renews after promotion until cance=
+lled. Pricing and availability may vary by country or region. Terms apply.<=
+/span></div><div></div></div></td>
+      </tr>
+    </tbody>
+  </table></td>
+        </tr>
+      </tbody>
+    </table></td>
+      </tr>
+    </tbody>
+  </table><table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" align=3D"=
+center" width=3D"100%" role=3D"module" data-type=3D"columns" style=3D"paddi=
+ng:0px 0px 0px 0px;" bgcolor=3D"#000000" data-distribution=3D"1">
+    <tbody>
+      <tr role=3D"module-content">
+        <td height=3D"100%" valign=3D"top"><table width=3D"580" style=3D"wi=
+dth:580px; border-spacing:0; border-collapse:collapse; margin:0px 10px 0px =
+10px;" cellpadding=3D"0" cellspacing=3D"0" align=3D"left" border=3D"0" bgco=
+lor=3D"" class=3D"column column-0">
+      <tbody>
+        <tr>
+          <td style=3D"padding:0px;margin:0px;border-spacing:0;"><table cla=
+ss=3D"wrapper" role=3D"module" data-type=3D"image" border=3D"0" cellpadding=
+=3D"0" cellspacing=3D"0" width=3D"100%" style=3D"table-layout: fixed;" data=
+-muid=3D"9a55b1ab-ab3d-4231-9da2-8492589b71bf">
+    <tbody>
+      <tr>
+        <td style=3D"font-size:6px; line-height:10px; padding:50px 0px 20px=
+ 30px;" valign=3D"top" align=3D"center">
+         =20
+        <a href=3D"http://url2996.playbackbone.com/ls/click?upn=3Du001.swX5=
+FRD5DBy5G1wHpWNU3-2B86TPMOxH1cA7GcjGaXDCFQd5mOjc-2F354ByhD2mwH0YXuyd_bEFSI5=
+fd-2FVtRpdHWCutOTYdoL-2BjBm2UPuPOYQnCgmXKeqViwKRbZVjIGk5bBQdXUwUdzo0ytuCILx=
+QnxIbHhQE2Nd1j-2BjJ93O7DrT3-2FqSOADD50IUqTI-2F29YFuVHhPozElyX-2FGY2MyWspA5r=
+gtU8qJPVaVPD1Z-2BY2lHcRb7p4BI-2BmpOKUD4YC-2FBg-2FbnW54FG59C8SvFx0JJOdoy-2Bm=
+7RLFQiKUznQ1TLB5ZhV5g-2BPiC3J98YFY2x4JLfbyr0sdOi9KqWPFMOudoX3mzMZSrVCoUuy0n=
+Va79fnRXOwyI3MAWWloJ0jcW-2FUGuQgsB-2FwX7QCuZrLuW9ndIBWU9KYnpEzxQ-3D-3D"><im=
+g class=3D"max-width" border=3D"0" style=3D"display:block; color:#000000; t=
+ext-decoration:none; font-family:Helvetica, arial, sans-serif; font-size:16=
+px;" width=3D"72" alt=3D"" data-proportionally-constrained=3D"true" data-re=
+sponsive=3D"false" src=3D"http://cdn.mcauto-images-production.sendgrid.net/=
+7c4307164a771199/b9d18c46-e471-4ccf-9676-f2c9c7072ee7/285x272.png" height=
+=3D"69"></a></td>
+      </tr>
+    </tbody>
+  </table><table class=3D"module" role=3D"module" data-type=3D"code" border=
+=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"100%" style=3D"table-la=
+yout: fixed;" data-muid=3D"aed90f73-577f-4191-b1d3-fa6059948011">
+    <tbody>
+      <tr>
+        <td height=3D"100%" valign=3D"top" role=3D"module-content"><div sty=
+le=3D"display:table;width:50%;margin-left:30px;height:20px; margin-top:20px=
+">
+    <div style=3D"display:table-cell;width:7%;margin-right:3px">
+        <a href=3D"http://url2996.playbackbone.com/ls/click?upn=3Du001.swX5=
+FRD5DBy5G1wHpWNU3xU0RjDKd5NxUgFpVE7ValPD0xzLj0L1WENS6pSZX7kCNAXu_bEFSI5fd-2=
+FVtRpdHWCutOTYdoL-2BjBm2UPuPOYQnCgmXKeqViwKRbZVjIGk5bBQdXUwUdzo0ytuCILxQnxI=
+bHhQE2Nd1j-2BjJ93O7DrT3-2FqSOADD50IUqTI-2F29YFuVHhPozElyX-2FGY2MyWspA5rgtU8=
+qJPVaVPD1Z-2BY2lHcRb7p4BI-2BmpOKUD4YC-2FBg-2FbnW54FGfj2wvnk-2FeTjq8TzZQ2rOT=
+o2kEXJ2792NBphPD-2F5NqC9RxLygqwXrbWzOiUrGv2bT3a9doUyYsoWUFnaeO2PFidFGtHkE-2=
+BNgROdDHsz5vBx67Q8-2BQ8pQtVKVgxEFDiR-2FW58rsN-2BYxcst-2BTNnk7HG7Mw-3D-3D">
+      <img src=3D"http://cdn.mcauto-images-production.sendgrid.net/7c430716=
+4a771199/0a91f0f0-5aa1-4afe-bfd6-9ad9a57c47db/101x116.png" height=3D"20px">
+      </a>
+    </div>
+    <div style=3D"display:table-cell;width:7%;margin-right:3px">
+            <a href=3D"http://url2996.playbackbone.com/ls/click?upn=3Du001.=
+swX5FRD5DBy5G1wHpWNU3wy8TB-2FkeIzzzQwEtAiwWa7wqzXfbCiSCPMmRKf1G4wKYGU0_bEFS=
+I5fd-2FVtRpdHWCutOTYdoL-2BjBm2UPuPOYQnCgmXKeqViwKRbZVjIGk5bBQdXUwUdzo0ytuCI=
+LxQnxIbHhQE2Nd1j-2BjJ93O7DrT3-2FqSOADD50IUqTI-2F29YFuVHhPozElyX-2FGY2MyWspA=
+5rgtU8qJPVaVPD1Z-2BY2lHcRb7p4BI-2BmpOKUD4YC-2FBg-2FbnW54FGiGapBdUmMBZDw6Ak2=
+QBzSfY2CotoOAc-2F9kCK0oJvpFrfb1LmfTjNUmXlL-2Bkdi8RH80DXT-2BRlBaTqUDUcSC-2BL=
+vs5sUmpCfld-2Be-2FcbpHlMxtUbPzt2nOJsptWdkRRfsQ70YDRgNDC0xvcGIKO1Wme5Xg-3D-3=
+D">
+      <img src=3D"http://cdn.mcauto-images-production.sendgrid.net/7c430716=
+4a771199/535a3f7a-8824-4953-90c7-f9ef3e6f4e8d/101x95.png" height=3D"20px">
+            </a>
+    </div>
+    <div style=3D"display:table-cell;width:7%;margin-right:3px">
+            <a href=3D"http://url2996.playbackbone.com/ls/click?upn=3Du001.=
+swX5FRD5DBy5G1wHpWNU35fV2EJ6pgQn4MRC6ZezVawTxh153KPzds3yueQW0-2F-2BuHkpQ_bE=
+FSI5fd-2FVtRpdHWCutOTYdoL-2BjBm2UPuPOYQnCgmXKeqViwKRbZVjIGk5bBQdXUwUdzo0ytu=
+CILxQnxIbHhQE2Nd1j-2BjJ93O7DrT3-2FqSOADD50IUqTI-2F29YFuVHhPozElyX-2FGY2MyWs=
+pA5rgtU8qJPVaVPD1Z-2BY2lHcRb7p4BI-2BmpOKUD4YC-2FBg-2FbnW54FGTYdb38n-2FcAfhB=
+DhpQdGLEr0uHiDSwoIJILQxO4qSO-2FrjE0SPt2LUeZ-2Fp10PQFqL-2FVx4754vrVwPnrtoFCS=
+yApSOlVakiFI3cHlZjrST7Coa80lO9NJzzuyEEqrmwMO1e8ZAePiA8U0mHSssWGy51GA-3D-3D"=
+>
+      <img src=3D"http://cdn.mcauto-images-production.sendgrid.net/7c430716=
+4a771199/1a65df25-5c4a-4398-8e00-23e2883784e8/101x98.png" height=3D"20px">
+            </a>
+    </div>
+    <div style=3D"display:table-cell;width:7%;margin-right:3px">
+            <a href=3D"http://url2996.playbackbone.com/ls/click?upn=3Du001.=
+swX5FRD5DBy5G1wHpWNU3xBoSa8kZnmsVDAjef-2Bw8-2FNR5cFJtfAP1xhN6dcjcvnlo2u8_bE=
+FSI5fd-2FVtRpdHWCutOTYdoL-2BjBm2UPuPOYQnCgmXKeqViwKRbZVjIGk5bBQdXUwUdzo0ytu=
+CILxQnxIbHhQE2Nd1j-2BjJ93O7DrT3-2FqSOADD50IUqTI-2F29YFuVHhPozElyX-2FGY2MyWs=
+pA5rgtU8qJPVaVPD1Z-2BY2lHcRb7p4BI-2BmpOKUD4YC-2FBg-2FbnW54FGD-2FETiLdJhyazH=
+daLwlq7XNdu1YXZJpP8YMhWEnBgzyZzR9VNkIypYJjtUug3LiTTHsgZgjFRyjkbwMb6XRcaAiDZ=
+fkI-2Fdb3-2F56I64jfWVLB-2BaUouy05aEgUavq2m1YXDK6hoj0QM-2B05I-2FCeZjHRgrQ-3D=
+-3D">
+      <img src=3D"http://cdn.mcauto-images-production.sendgrid.net/7c430716=
+4a771199/d5971843-ad1f-44f0-8745-a3e6a61e8917/117x113.png" height=3D"20px">
+           </a>
+    </div>
+    <div style=3D"display:table-cell;width:7%;margin-right:3px">
+            <a href=3D"http://url2996.playbackbone.com/ls/click?upn=3Du001.=
+swX5FRD5DBy5G1wHpWNU39qvwSiBjRBlDzPxYGkRxKQEnDdmE1-2Bt0oIkCFyeEtmU-X3K_bEFS=
+I5fd-2FVtRpdHWCutOTYdoL-2BjBm2UPuPOYQnCgmXKeqViwKRbZVjIGk5bBQdXUwUdzo0ytuCI=
+LxQnxIbHhQE2Nd1j-2BjJ93O7DrT3-2FqSOADD50IUqTI-2F29YFuVHhPozElyX-2FGY2MyWspA=
+5rgtU8qJPVaVPD1Z-2BY2lHcRb7p4BI-2BmpOKUD4YC-2FBg-2FbnW54FGh1UERla7FipoY-2BF=
+LHqZ24s2ZgJiRCBsiI58ijmqu-2FFMac0-2FaamI0IDY2H0SRwjKFA8M90Cubx5UTGqWwb0oJso=
+knCsxfauP7JySJmAEbaVmcGKgtzWoJWZrfVTHJAgDa0CUuakKSluGvpsPpV-2BDt2Q-3D-3D">
+      <img src=3D"http://cdn.mcauto-images-production.sendgrid.net/7c430716=
+4a771199/fd9084fc-2d87-4411-84a8-da66cda56f9f/83x80.png" height=3D"20px">
+            </a>
+    </div>
+    <div style=3D"display:table-cell;width:7%;margin-right:3px">
+            <a href=3D"http://url2996.playbackbone.com/ls/click?upn=3Du001.=
+swX5FRD5DBy5G1wHpWNU3zEF5R-2FbRlU7UeM3lShGsGRIzgG1Cvp5DuvcbABqndpgOb7z_bEFS=
+I5fd-2FVtRpdHWCutOTYdoL-2BjBm2UPuPOYQnCgmXKeqViwKRbZVjIGk5bBQdXUwUdzo0ytuCI=
+LxQnxIbHhQE2Nd1j-2BjJ93O7DrT3-2FqSOADD50IUqTI-2F29YFuVHhPozElyX-2FGY2MyWspA=
+5rgtU8qJPVaVPD1Z-2BY2lHcRb7p4BI-2BmpOKUD4YC-2FBg-2FbnW54FGT1AK6uNXWq8V1GObN=
+ie85XEZbelW6LxTkkLULdMfHfw-2FP6-2Fznmx7b8y-2FHJ9zD8HECZoVWDF6Rn2j-2F7xQA-2B=
+casdtaLVaEdfA1Sinz8HAVM4N5qQRm-2FOy9qbpV7uhd9lQ84E-2F18pCed2KNSF-2FDcYFC0g-=
+3D-3D">
+      <img src=3D"http://cdn.mcauto-images-production.sendgrid.net/7c430716=
+4a771199/5add04ce-901a-47dc-9baa-d666d6abf426/80x71.png" height=3D"20px">
+            </a>
+    </div>
+    <div style=3D"display:table-cell;width:7%;margin-right:3px">
+            <a href=3D"http://url2996.playbackbone.com/ls/click?upn=3Du001.=
+swX5FRD5DBy5G1wHpWNU3-2Bo-2Blj96XkY2FmrGgrjGVsayewHqxAceldavxH71WNA7AV0p_bE=
+FSI5fd-2FVtRpdHWCutOTYdoL-2BjBm2UPuPOYQnCgmXKeqViwKRbZVjIGk5bBQdXUwUdzo0ytu=
+CILxQnxIbHhQE2Nd1j-2BjJ93O7DrT3-2FqSOADD50IUqTI-2F29YFuVHhPozElyX-2FGY2MyWs=
+pA5rgtU8qJPVaVPD1Z-2BY2lHcRb7p4BI-2BmpOKUD4YC-2FBg-2FbnW54FGFrb-2F5dxoDgKLi=
+UUQ3rjDoDn73t6JCt6hU0wXG5QC7-2BE1LgIL3kFN6-2BBgz56Dlko6a8MvF6PDx5XxJwGRhK4E=
+1Tu-2FRJoYK1DvTZgqHtf8nFfYsCWoWshdyclV8XV0jAbkCv-2F463HDQVBJULkfC-2BEkMg-3D=
+-3D">
+      <img src=3D"http://cdn.mcauto-images-production.sendgrid.net/7c430716=
+4a771199/f3510c51-f5d0-45ab-a5aa-cdd980e08fff/123x86.png" height=3D"20px">
+            </a>
+    </div>
+    </div>
+</td>
+      </tr>
+    </tbody>
+  </table></td>
+        </tr>
+      </tbody>
+    </table></td>
+      </tr>
+    </tbody>
+  </table><table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" align=3D"=
+center" width=3D"100%" role=3D"module" data-type=3D"columns" style=3D"paddi=
+ng:0px 0px 0px 0px;" bgcolor=3D"#000000" data-distribution=3D"1,1">
+    <tbody>
+      <tr role=3D"module-content">
+        <td height=3D"100%" valign=3D"top"><table width=3D"300" style=3D"wi=
+dth:300px; border-spacing:0; border-collapse:collapse; margin:0px 0px 0px 0=
+px;" cellpadding=3D"0" cellspacing=3D"0" align=3D"left" border=3D"0" bgcolo=
+r=3D"" class=3D"column column-0">
+      <tbody>
+        <tr>
+          <td style=3D"padding:0px;margin:0px;border-spacing:0;"><table cla=
+ss=3D"module" role=3D"module" data-type=3D"text" border=3D"0" cellpadding=
+=3D"0" cellspacing=3D"0" width=3D"100%" style=3D"table-layout: fixed;" data=
+-muid=3D"c6654870-e3c1-4d1f-b856-12158e1c3cdb" data-mc-module-version=3D"20=
+19-10-22">
+    <tbody>
+      <tr>
+        <td style=3D"padding:18px 0px 18px 30px; line-height:22px; text-ali=
+gn:inherit; background-color:#000000;" height=3D"100%" valign=3D"top" bgcol=
+or=3D"#000000" role=3D"module-content"><div><div style=3D"font-family: inhe=
+rit; text-align: inherit"><span style=3D"color: #b2b2b2">=A9 2023 Backbone =
+Labs, Inc.</span></div>
+<div style=3D"font-family: inherit; text-align: inherit"><br></div>
+<div style=3D"font-family: inherit; text-align: inherit"><span style=3D"col=
+or: #b2b2b2">915 Broadway Street Suite 258,<br>
+Vancouver, WA 98660</span></div><div></div></div></td>
+      </tr>
+    </tbody>
+  </table></td>
+        </tr>
+      </tbody>
+    </table><table width=3D"300" style=3D"width:300px; border-spacing:0; bo=
+rder-collapse:collapse; margin:0px 0px 0px 0px;" cellpadding=3D"0" cellspac=
+ing=3D"0" align=3D"left" border=3D"0" bgcolor=3D"" class=3D"column column-1=
+">
+      <tbody>
+        <tr>
+          <td style=3D"padding:0px;margin:0px;border-spacing:0;"><table cla=
+ss=3D"module" role=3D"module" data-type=3D"text" border=3D"0" cellpadding=
+=3D"0" cellspacing=3D"0" width=3D"100%" style=3D"table-layout: fixed;" data=
+-muid=3D"11a0a45c-dc2e-4488-b5a2-b1086ae105f3" data-mc-module-version=3D"20=
+19-10-22">
+    <tbody>
+      <tr>
+        <td style=3D"padding:18px 0px 18px 30px; line-height:22px; text-ali=
+gn:inherit;" height=3D"100%" valign=3D"top" bgcolor=3D"" role=3D"module-con=
+tent"><div><div style=3D"font-family: inherit; text-align: inherit"><span s=
+tyle=3D"color: #ffffff">Have a question?</span></div>
+<div style=3D"font-family: inherit; text-align: inherit"><span style=3D"col=
+or: #ffffff">Visit our </span><a href=3D"http://url2996.playbackbone.com/ls=
+/click?upn=3Du001.swX5FRD5DBy5G1wHpWNU33o9xkKOBZb6VD2MEy3jKml8s-2BAhjWNDk87=
+ylDp8ZiLbQLCM_bEFSI5fd-2FVtRpdHWCutOTYdoL-2BjBm2UPuPOYQnCgmXKeqViwKRbZVjIGk=
+5bBQdXUwUdzo0ytuCILxQnxIbHhQE2Nd1j-2BjJ93O7DrT3-2FqSOADD50IUqTI-2F29YFuVHhP=
+ozElyX-2FGY2MyWspA5rgtU8qJPVaVPD1Z-2BY2lHcRb7p4BI-2BmpOKUD4YC-2FBg-2FbnW54F=
+Gdrx8RRHm88mdAWD3-2BtU-2FgKFHqlbNS6UzopeZuPscLmmRHcFRRFxMxmdLpjAfNHntciB35c=
+UkDqAmyGiHZK0RSiz4whQXnW92uNAfzYWXyotD4m1GriIAzPZASIdOPvPbQt1SgYJntWkX61-2F=
+-2B7rbYuQ-3D-3D"><span style=3D"color: #f77041; text-decoration-line: none;=
+ text-decoration-thickness: initial; text-decoration-style: initial; text-d=
+ecoration-color: initial"><strong>Help Center</strong></span></a></div><div=
+></div></div></td>
+      </tr>
+    </tbody>
+  </table></td>
+        </tr>
+      </tbody>
+    </table></td>
+      </tr>
+    </tbody>
+  </table><table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" align=3D"=
+center" width=3D"100%" role=3D"module" data-type=3D"columns" style=3D"paddi=
+ng:0px 0px 0px 0px;" bgcolor=3D"#000000" data-distribution=3D"1,1">
+    <tbody>
+      <tr role=3D"module-content">
+        <td height=3D"100%" valign=3D"top"><table width=3D"300" style=3D"wi=
+dth:300px; border-spacing:0; border-collapse:collapse; margin:0px 0px 0px 0=
+px;" cellpadding=3D"0" cellspacing=3D"0" align=3D"left" border=3D"0" bgcolo=
+r=3D"" class=3D"column column-0">
+      <tbody>
+        <tr>
+          <td style=3D"padding:0px;margin:0px;border-spacing:0;"><div data-=
+role=3D"module-unsubscribe" class=3D"module" role=3D"module" data-type=3D"u=
+nsubscribe" style=3D"color:#444444; font-size:14px; line-height:22px; paddi=
+ng:18px 16px 18px 30px; text-align:left;" data-muid=3D"b90f7995-a171-46f0-a=
+bc2-32eeeee07bf4"><div class=3D"Unsubscribe--addressLine"></div><p style=3D=
+"font-size:14px; line-height:22px;"><a class=3D"Unsubscribe--unsubscribeLin=
+k" href=3D"<%asm_group_unsubscribe_raw_url%>" target=3D"_blank" style=3D"co=
+lor:#868686;">Unsubscribe</a></p></div></td>
+        </tr>
+      </tbody>
+    </table><table width=3D"300" style=3D"width:300px; border-spacing:0; bo=
+rder-collapse:collapse; margin:0px 0px 0px 0px;" cellpadding=3D"0" cellspac=
+ing=3D"0" align=3D"left" border=3D"0" bgcolor=3D"" class=3D"column column-1=
+">
+      <tbody>
+        <tr>
+          <td style=3D"padding:0px;margin:0px;border-spacing:0;"><table cla=
+ss=3D"module" role=3D"module" data-type=3D"text" border=3D"0" cellpadding=
+=3D"0" cellspacing=3D"0" width=3D"100%" style=3D"table-layout: fixed;" data=
+-muid=3D"9d50f078-af4a-4a54-b8f6-ea0f24a43e4d" data-mc-module-version=3D"20=
+19-10-22">
+    <tbody>
+      <tr>
+        <td style=3D"padding:18px 0px 18px 30px; line-height:22px; text-ali=
+gn:inherit;" height=3D"100%" valign=3D"top" bgcolor=3D"" role=3D"module-con=
+tent"><div><div style=3D"font-family: inherit; text-align: inherit"><a href=
+=3D"http://url2996.playbackbone.com/ls/click?upn=3Du001.swX5FRD5DBy5G1wHpWN=
+U3-2B86TPMOxH1cA7GcjGaXDCHGDOsDP3i7feNExbE-2BU35K-EJX_bEFSI5fd-2FVtRpdHWCut=
+OTYdoL-2BjBm2UPuPOYQnCgmXKeqViwKRbZVjIGk5bBQdXUwUdzo0ytuCILxQnxIbHhQE2Nd1j-=
+2BjJ93O7DrT3-2FqSOADD50IUqTI-2F29YFuVHhPozElyX-2FGY2MyWspA5rgtU8qJPVaVPD1Z-=
+2BY2lHcRb7p4BI-2BmpOKUD4YC-2FBg-2FbnW54FGg6rmplAPMzKsyVDIlMf3zIJ2JCLk2zlT2b=
+kSRvQdnP15aL8SatFO56IcwsbmRVP6CpY8tVsqW8vaYC4G-2FFTG-2FgWdmAyxV4aGtqOw5l6Ok=
+wZXSim-2FlEkLPiq7a8F1AzTfx-2B0W-2FoN7PfYROAsukUO7KA-3D-3D"><span style=3D"c=
+olor: #b3b3b3; text-decoration-line: none; text-decoration-thickness: initi=
+al; text-decoration-style: initial; text-decoration-color: initial">Terms &=
+amp; Conditions</span></a> <a href=3D"http://url2996.playbackbone.com/ls/cl=
+ick?upn=3Du001.swX5FRD5DBy5G1wHpWNU3-2B86TPMOxH1cA7GcjGaXDCHgZzz8qY-2FNq1QX=
+uyGestE-2BTziM_bEFSI5fd-2FVtRpdHWCutOTYdoL-2BjBm2UPuPOYQnCgmXKeqViwKRbZVjIG=
+k5bBQdXUwUdzo0ytuCILxQnxIbHhQE2Nd1j-2BjJ93O7DrT3-2FqSOADD50IUqTI-2F29YFuVHh=
+PozElyX-2FGY2MyWspA5rgtU8qJPVaVPD1Z-2BY2lHcRb7p4BI-2BmpOKUD4YC-2FBg-2FbnW54=
+FGLkeiHiCzgVFschWhBVij9XQuewMofDg3QXRvsQszZXa8OYpYyje1WYUmVblhRo6c4bsxnrtls=
+NjiI674JnvaPQLaFApK0dRC5aherYyaT8nBwzGqkcSyZSWYXzspice9-2FRz6SwQjQa-2Fdl9N6=
+T2L9Iw-3D-3D"><span style=3D"color: #b3b3b3; text-decoration-line: none; te=
+xt-decoration-thickness: initial; text-decoration-style: initial; text-deco=
+ration-color: initial">Privacy Policy</span></a></div><div></div></div></td=
+>
+      </tr>
+    </tbody>
+  </table></td>
+        </tr>
+      </tbody>
+    </table></td>
+      </tr>
+    </tbody>
+  </table></td>
+                                      </tr>
+                                    </table>
+                                    <!--[if mso]>
+                                  </td>
+                                </tr>
+                              </table>
+                            </center>
+                            <![endif]-->
+                          </td>
+                        </tr>
+                      </table>
+                    </td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+          </table>
+        </div>
+      </center>
+    If you'd like to unsubscribe and stop receiving these emails <a href=3D=
+"http://url2996.playbackbone.com/wf/unsubscribe?upn=3Du001.TvUIbrdUjKSS2XRV=
+2EpkrDPVhW5kb6OLzmj15PvOFTv9JobwctyvT0hSqcVPPhTmFfhtYOPiDVyQfJx9qAnzP0VTHHZ=
+aHIAzeev58oq5fDMLT3bNkoM-2BocnnQm2LUGAns1S7dILP0p9HUgZWjSbfv3874s-2BSvNuxWi=
+wp-2BXdHormTBfV5H5XWfcVuTMkDUUwL7TtJ5g3oFYrVYIJVFwvskOkZfAdGu1YbptczWdOFt3H=
+xARL8bMncOeWKIuS-2FBF2q6UAl3jFrmSHGZeTQOU2qv7-2BnRGt6Gyhseip-2FPjkSWcQ5CYtH=
+IqCRCKRKrZIW0XbTy4GMDAufDdml8L7JuBIaPU6AJV6RM-2BnBqHH5EGNi36k-3D"> click he=
+re </a>.<img src=3D"http://url2996.playbackbone.com/wf/open?upn=3Du001.TvUI=
+brdUjKSS2XRV2EpkrDPVhW5kb6OLzmj15PvOFTv9JobwctyvT0hSqcVPPhTmFfhtYOPiDVyQfJx=
+9qAnzP0VTHHZaHIAzeev58oq5fDMLT3bNkoM-2BocnnQm2LUGAns1S7dILP0p9HUgZWjSbfv387=
+4s-2BSvNuxWiwp-2BXdHormTBfV5H5XWfcVuTMkDUUwLRfr4Ic9pryfzeUTtYRaPsrfTEQJqH96=
+MqOOl6umdaCiLf-2F6WzraD2m8XUAhkDuFrfQKR4D5uruaxUyhq5Lcvmk2IhfwB5MEoCR1L1YZe=
+d2-2FpcXk7l2PxbpXGppXuT9jK7eCZPY2HcxgVk4ytKS3XqQ-3D-3D" alt=3D"" width=3D"1=
+" height=3D"1" border=3D"0" style=3D"height:1px !important;width:1px !impor=
+tant;border-width:0 !important;margin-top:0 !important;margin-bottom:0 !imp=
+ortant;margin-right:0 !important;margin-left:0 !important;padding-top:0 !im=
+portant;padding-bottom:0 !important;padding-right:0 !important;padding-left=
+:0 !important;"/></body>
+  </html>
+--59c67409009c06eb45ebced5977dd54de4aec40e0b22f5854bc023c898ac--
