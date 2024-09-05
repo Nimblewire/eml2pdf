@@ -9,7 +9,6 @@ public class TestTextToPdf {
     public static void main(String[] args) {
 
         // Define the text you want to write to the PDF
-        //TODO Make a RegEx that can find the "text/plain" content in the .eml files
         Base64.Decoder decoder = Base64.getMimeDecoder();
         byte[] bite = decoder.decode("T25jZSB1cG9uIGEgdGltZSwgYW4gZWdnIGZlbGwgb2ZmIGEgd2FsbC4NCg0KVGhlbiwgZXZlcnlv\r\n" +
                         "bmUgd2FzIHNhZCwgYW5kIHRoZW4gdGhlIGVnZyBicm9rZSwgYW5kIHRoZW4gdGhlIHN1biByb2Fz\r\n" +
@@ -116,7 +115,7 @@ public class TestTextToPdf {
             // Save the document to a file
             document.save("TextToPDFSample.pdf");
             System.out.println("PDF created successfully.");
-            
+            System.out.println(InputFiles.getAltData());
         } catch (IOException e) {
             e.printStackTrace();
         }
