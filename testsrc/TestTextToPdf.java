@@ -113,9 +113,9 @@ public class TestTextToPdf {
 
             
             // Save the document to a file
-            document.save("TextToPDFSample.pdf");
-            System.out.println("PDF created successfully.");
-            System.out.println(InputFiles.getAltData());
+            //document.save("TextToPDFSample.pdf");
+            //System.out.println("PDF created successfully.");
+            System.out.println(InputFiles.getText("samples\\Danger Mail.eml"));
         } catch (IOException e) {
             e.printStackTrace();
         }

@@ -1,0 +1,47 @@
+MIME-Version: 1.0
+Date: Fri, 6 Sep 2024 13:07:18 -0600
+Message-ID: <CAGs4imaw_iDXj1-o2ao0aL+cJZ+-62msypM3Fo6igJ7aHeYW3g@mail.gmail.com>
+Subject: Danger Mail
+From: Howard Crawford <hicrawford982@gmail.com>
+To: Howard Crawford <hicrawford982@gmail.com>
+Content-Type: multipart/alternative; boundary="000000000000d4c6300621781d71"
+
+--000000000000d4c6300621781d71
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+Example scary code:
+
+Look at me, I=E2=80=99m soooooo innocent=E2=80=A6
+
+=F0=9F=98=88
+
+=E2=80=9CSome malicious code stuff=E2=80=9D \+ runMe();
+
+\r\u\n\M\e\(\)\;
+
+" + "*v*" + "
+amp &
+lt <
+gt >
+
+--000000000000d4c6300621781d71
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr"><span style=3D"color:rgb(80,0,80)">Example scary code:</sp=
+an><div dir=3D"auto" style=3D"color:rgb(80,0,80)"><br></div><div dir=3D"aut=
+o" style=3D"color:rgb(80,0,80)">Look at me, I=E2=80=99m soooooo innocent=E2=
+=80=A6</div><div dir=3D"auto" style=3D"color:rgb(80,0,80)"><br></div><div d=
+ir=3D"auto" style=3D"color:rgb(80,0,80)">=F0=9F=98=88</div><div dir=3D"auto=
+" style=3D"color:rgb(80,0,80)"><br></div><div dir=3D"auto" style=3D"color:r=
+gb(80,0,80)">=E2=80=9CSome malicious code stuff=E2=80=9D \+ runMe();</div><=
+div dir=3D"auto" style=3D"color:rgb(80,0,80)"><br></div><div dir=3D"auto" s=
+tyle=3D"color:rgb(80,0,80)">\r\u\n\M\e\(\)\;</div><div dir=3D"auto" style=
+=3D"color:rgb(80,0,80)"><br></div><div style=3D"color:rgb(80,0,80)">&quot;=
+=C2=A0+ &quot;*v*&quot;=C2=A0<a class=3D"gmail_plusreply" id=3D"plusReplyCh=
+ip-1">+</a> &quot;</div><div style=3D"color:rgb(80,0,80)">amp &amp;</div><d=
+iv style=3D"color:rgb(80,0,80)">lt &lt;</div><div style=3D"color:rgb(80,0,8=
+0)">gt &gt;</div></div>
+
+--000000000000d4c6300621781d71--
