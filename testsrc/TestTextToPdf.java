@@ -2,24 +2,12 @@ import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.pdfbox.pdmodel.PDPage;
 import org.apache.pdfbox.pdmodel.PDPageContentStream;
 import org.apache.pdfbox.pdmodel.font.PDType1Font;
-import java.util.Base64;
 import java.io.IOException;
 
 public class TestTextToPdf {
-    public static void main(String[] args) {
-
-        // Define the text you want to write to the PDF
-        Base64.Decoder decoder = Base64.getMimeDecoder();
-        byte[] bite = decoder.decode("T25jZSB1cG9uIGEgdGltZSwgYW4gZWdnIGZlbGwgb2ZmIGEgd2FsbC4NCg0KVGhlbiwgZXZlcnlv\r\n" +
-                        "bmUgd2FzIHNhZCwgYW5kIHRoZW4gdGhlIGVnZyBicm9rZSwgYW5kIHRoZW4gdGhlIHN1biByb2Fz\r\n" +
-                        "dGVkIHRoZSBlZ2csIGFuZCB0aGVuIGV2ZXJ5b25lIGF0ZSBzY3JhbWJsZWQgZWdncywgYW5kIHNv\r\n" +
-                        "IHRoZXkgd2VyZW7igJl0IHNhZCBhbnltb3JlIQ0KDQpUaGlzIGlzIGEgZHJ5ZXI6DQpbY2lkOjYy\r\n" +
-                        "MTNBMUU4LUY2OEQtNEM0NS1BRTYxLUZBMkJFRDBCNDFFNF0NCg0KUmFuZG9tIHByb3RlY3RlZCBj\r\n" +
-                        "aGFyYWN0ZXJzOg0Ke31bXSgpPD58L1wjJV4qKz0uLOKAmeKAmeKAneKAnUAmJC06Ow0KDQpBbHNv\r\n" +
-                        "LCBoZXJl4oCZcyBhIC5qc29uIGZpbGUgZnJvbSBNaW5lY3JhZnQNCg==");
-        String text = new String(bite);        
-
+    static void createPDF(String[] text) {
         // Create a new PDF document
+        // TODO Create new pages as needed.
         try (PDDocument document = new PDDocument()) {
             // Create a new page in the PDF document
             PDPage page = new PDPage();
@@ -35,25 +23,42 @@ public class TestTextToPdf {
                 // Start writing text
                 contentStream.beginText();
                 contentStream.setLeading(14.5f); // Set line spacing
-                contentStream.newLineAtOffset(25, 700); // Position at (x, y)
-
-                // Remove MIME formatting from the decoded "text/plain" content
-                String newText = text.replace("\r", "");
-                
-                // Add some text cases then split the string
-                newText += "\n1234567890987654321234567890987654321234567890987654321234567890987654321234567890987654321234567890987654321. Gee whiz mister, that\'s a lot of damage! Better get some Flex Tape and fix that sucker up reeeeaaaaal good!";
-                String[] finalText = newText.split("\n");
+                contentStream.newLineAtOffset(25, 750); // Position at (x, y)
 
                 // Gets the width of the page as a float
                 float width = page.getCropBox().getWidth();
 
-                for (String string : finalText) {
+                for (String string : text) {
 
                     // Finds the width of the each string and compares it to the width of the page.
-                    // If the string is too big, split it up into words and add each word one at a time until it's the right size. (Help from Michael Woywod on stackoverflow.com)
-                    float textWidth = fontSize * font.getStringWidth(string) / 1000;
+                    float textWidth = 0.0f;
 
-                    if (textWidth >= width - 50.0f) {
+                    // Check if there are any unknown characters in the current line. 
+                    try {
+                        textWidth = fontSize * font.getStringWidth(string) / 1000;
+
+                    // If unknown characters are found, break the line into individual characters and replace the bad ones with "?" (Help from TIlman Hausherr on apache.org and Copilot AI)
+                    } catch (IllegalArgumentException e) {
+                        String sanitized = "";
+                        String[] reviewChars = string.split("");
+                        
+                        for (String item : reviewChars) {
+                            try {
+                                font.getStringWidth(item);
+                                sanitized += item;
+                            
+                            } catch (IllegalArgumentException e2) {
+                                sanitized += "?";
+                            }
+                        }
+
+                        // Swap the string with the unusable characters for the sanitized one
+                        string = sanitized;
+                        textWidth = fontSize * font.getStringWidth(string) / 1000;
+                    }
+
+                    // If the string is too big, split it up into words and add each word one at a time until it's the right size. (Help from Michael Woywod on stackoverflow.com)
+                    if (textWidth > width - 50.0f) {
                         String line = "";
                         String[] words = string.split(" ");
                         float lineWidth = 0.0f;
@@ -110,14 +115,19 @@ public class TestTextToPdf {
                 // End text writing
                 contentStream.endText();
             }
-
             
             // Save the document to a file
-            //document.save("TextToPDFSample.pdf");
-            //System.out.println("PDF created successfully.");
-            System.out.println(InputFiles.getText("samples\\Danger Mail.eml"));
+            document.save("TextToPDFSample.pdf");
+            System.out.println("PDF created successfully.");
+
         } catch (IOException e) {
             e.printStackTrace();
         }
+
+    }
+
+    public static void main(String[] args) {
+        String[] fileData = InputFiles.getLines("samples\\Business Email Small.eml");
+        createPDF(fileData);
     }
 }

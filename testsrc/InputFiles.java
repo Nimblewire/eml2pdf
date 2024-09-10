@@ -2,6 +2,7 @@ import java.util.Scanner;
 import java.util.regex.Pattern;
 import java.util.regex.Matcher;
 import java.util.HashSet;
+import java.util.Base64;
 import java.io.File;
 
 public class InputFiles {
@@ -56,10 +57,19 @@ public class InputFiles {
 
     // TODO handle base64 encoded content
     static String decodeBase64(String data, String contentType) {
-        return "";
+        Base64.Decoder decoder = Base64.getMimeDecoder();
+        byte[] bite = decoder.decode(data);
+        String text = new String(bite);
+        return text;
     }
 
-    static String getText(String path) {
+    static String[] cleanupMIMEStrings(String data) {
+        String cleanData = data.replace("\r", "");
+        String[] dataArray = cleanData.split("\n");
+        return dataArray;
+    }
+
+    static String[] getLines(String path) {
         try {
             File eml = new File(path);
             Scanner reader = new Scanner(eml);
@@ -92,7 +102,7 @@ public class InputFiles {
                 }
 
                 if (reader.findInLine(encodingKey) != null) {
-                    encoding = reader.nextLine();
+                    encoding = reader.nextLine().trim();
                     encodingFlag = true;
                 }
                 
@@ -121,25 +131,29 @@ public class InputFiles {
             data = rawData.trim();
             reader.close();
 
-            String fileData = "";
+            String[] fileData = {};
+            boolean success = false;
+            
             switch (encoding) {
                 case "quoted-printable":
-                    fileData = decodeQuoted(data, contentType);
-                    break;
+                    fileData = cleanupMIMEStrings(decodeQuoted(data, contentType));
+                    success = true;
             
                 case "base64":
-                    fileData = decodeBase64(data, contentType);
+                    fileData = cleanupMIMEStrings(decodeBase64(data, contentType));
+                    success = true;
                     break;
 
                 default:
-                    fileData = decodeQuoted(data, contentType);
+                    fileData = cleanupMIMEStrings(decodeQuoted(data, contentType));
+                    success = false;
                     break;
             }
 
             return fileData;
 
         } catch (Exception e) {
-            return "Fail :(\n" + e;
+            return new String[] {"Fail :(\n" + e};
         }
     }    
 }
