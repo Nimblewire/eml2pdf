@@ -22,11 +22,12 @@ public class RenderHTML2Pdf extends PdfRendererBuilder
     public void convert(OutputStream out) throws Throwable
     {
         PDDocument doc = new PDDocument();
+        MailResolver resolver=new MailResolver(reader,doc);
         //ImageCache cache=new ImageCache(reader);
 
         usePDDocument(doc);
-        //useCache(cache);
-        //useUriResolver(cache);
+        useCache(resolver);
+        useUriResolver(resolver);
         Document document=tidy(reader.getBody());
         //preProcess(document);
         withW3cDocument(document,"@@server");

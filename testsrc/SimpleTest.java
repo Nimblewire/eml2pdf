@@ -8,6 +8,7 @@ import java.io.FileOutputStream;
 public class SimpleTest {
 
     public static void main(String[] args) throws Throwable {
+        boolean single=false;
 
         String dir=System.getProperty("user.dir");
         File file = new File(dir);
@@ -19,11 +20,20 @@ public class SimpleTest {
             {
                 continue;
             }
+            if (single && !f.getName().contains("Email Small"))
+            {
+                continue;
+            }
             FileInputStream fis = new FileInputStream(f);
             FileOutputStream fos = new FileOutputStream(new File(out,f.getName()+".pdf"));
             MailToPdf.convert(fis,fos);
         }
         System.out.println(folder.getAbsolutePath());
+
+    }
+
+    private static void single()
+    {
 
     }
 }

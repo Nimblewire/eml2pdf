@@ -29,6 +29,11 @@ public class MailReader {
         return body;
     }
 
+    public ContentPart findImage(String id)
+    {
+        return null;
+    }
+
     public void load(InputStream inputStream) throws MessagingException, IOException {
         MimeMessage message= new MimeMessage(null, inputStream);
 
