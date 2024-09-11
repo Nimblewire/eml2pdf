@@ -31,6 +31,11 @@ public class MailReader {
 
     public ContentPart findImage(String id)
     {
+        for (ContentPart part : parts) {
+            if (part.getContentID().indexOf(id) != -1) {
+                return part;
+            }
+        }
         return null;
     }
 
@@ -50,6 +55,11 @@ public class MailReader {
                     contentPart.setFilename(fileName);
                     contentPart.setContent(read(p.getInputStream()));
                     contentPart.setContentType(p.getContentType());
+                    String cID = p.getHeader("Content-ID")[0];
+                    String miniCID = cID.replace("<", "");
+                    miniCID = miniCID.replace(">", "");
+                    miniCID = "cid:" + miniCID;
+                    contentPart.setContentID(miniCID);
                     parts.add(contentPart);
                 }
             }

@@ -4,6 +4,7 @@ public class ContentPart {
     private byte[] content;
     private String filename;
     private String contentType;
+    private String contentID;
 
     public ContentPart() {
     }
@@ -30,5 +31,13 @@ public class ContentPart {
 
     public void setContentType(String contentType) {
         this.contentType = contentType;
+    }
+
+    public String getContentID() {
+        return contentID;
+    }
+
+    public void setContentID(String contentID) {
+        this.contentID = contentID;
     }
 }

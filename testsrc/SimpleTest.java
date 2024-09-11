@@ -8,7 +8,7 @@ import java.io.FileOutputStream;
 public class SimpleTest {
 
     public static void main(String[] args) throws Throwable {
-        boolean single=false;
+        boolean single=true;
 
         String dir=System.getProperty("user.dir");
         File file = new File(dir);
@@ -20,7 +20,7 @@ public class SimpleTest {
             {
                 continue;
             }
-            if (single && !f.getName().contains("Email Small"))
+            if (single && !f.getName().contains("-qouted.eml"))
             {
                 continue;
             }
