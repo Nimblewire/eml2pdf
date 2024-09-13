@@ -48,26 +48,34 @@ public class MailReader {
             for (int i = 0; i < multipart.getCount(); i++)
             {
                 Part p = multipart.getBodyPart(i);
+                String type = p.getContentType();
+                if (type.contains("multipart/related"))
+                {
+                    Multipart subMulti = (Multipart) p.getContent();
+                    for (int j = 0; j < subMulti.getCount(); j++)
+                    {
+                        Part subP = subMulti.getBodyPart(j);
+                        String subFileName = subP.getFileName();
+                        if (subFileName != null)
+                        {
+                            ContentPart contentPart = setContent(subP, subFileName);
+                            parts.add(contentPart);
+                        }
+                    }
+                    continue;
+                }
                 String fileName = p.getFileName();
                 if (fileName != null)
                 {
-                    ContentPart contentPart=new ContentPart();
-                    contentPart.setFilename(fileName);
-                    contentPart.setContent(read(p.getInputStream()));
-                    contentPart.setContentType(p.getContentType());
-                    String cID = p.getHeader("Content-ID")[0];
-                    String miniCID = cID.replace("<", "");
-                    miniCID = miniCID.replace(">", "");
-                    miniCID = "cid:" + miniCID;
-                    contentPart.setContentID(miniCID);
+                    ContentPart contentPart = setContent(p, fileName);
                     parts.add(contentPart);
                 }
             }
         }
-        body = getText(message);
+        body = getText(message, parts);
     }
 
-    private String getText(Part p) throws MessagingException, IOException
+    private String getText(Part p, ArrayList<ContentPart> parts) throws MessagingException, IOException
     {
         if (p.isMimeType("text/*"))
         {
@@ -113,20 +121,26 @@ public class MailReader {
                 {
                     if (text == null)
                     {
-                        text = getText(bp);
+                        text = getText(bp, parts);
                     }
                 }
                 else if (bp.isMimeType("text/html"))
                 {
-                    String s = getText(bp);
+                    String s = getText(bp, parts);
                     if (s != null)
                     {
+                        for (ContentPart part : parts) {
+                            if (part.getContentType().toLowerCase().contains("image") && !s.contains(part.getContentID()))
+                            {
+                                s += "<div dir=3D\"auto\"><div><img src=\"" + part.getContentID() + "\" style=3D\"max-width: 100%;\"></div><br>";
+                            }
+                        }
                         return s;
                     }
                 }
                 else
                 {
-                    return getText(bp);
+                    return getText(bp, parts);
                 }
             }
             return text;
@@ -136,7 +150,7 @@ public class MailReader {
             Multipart mp = (Multipart) p.getContent();
             for (int i = 0; i < mp.getCount(); i++)
             {
-                String s = getText(mp.getBodyPart(i));
+                String s = getText(mp.getBodyPart(i), parts);
                 if (s != null)
                 {
                     return s;
@@ -147,6 +161,22 @@ public class MailReader {
         return null;
     }
 
+    private ContentPart setContent(Part p, String fileName) {
+        try {
+            ContentPart contentPart = new ContentPart();
+            contentPart.setFilename(fileName);
+            contentPart.setContent(read(p.getInputStream()));
+            contentPart.setContentType(p.getContentType());
+            String cID = p.getHeader("Content-ID")[0];
+            String miniCID = cID.replace("<", "");
+            miniCID = miniCID.replace(">", "");
+            miniCID = "cid:" + miniCID;
+            contentPart.setContentID(miniCID);
+            return contentPart;
+        } catch (Exception e) {
+            return null;
+        }
+    }
 
    private byte[] read(InputStream in) throws IOException {
             ByteArrayOutputStream buf = new ByteArrayOutputStream();
@@ -204,5 +234,4 @@ public class MailReader {
             }
         }
     }
-
 }
